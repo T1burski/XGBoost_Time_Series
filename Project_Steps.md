@@ -33,6 +33,26 @@ Then, for the sake of simplicity, we selected the data before 2016 as the traini
 ![image](https://user-images.githubusercontent.com/100734219/224863640-d6bea8cf-d22a-4872-8d53-8ca76de2c7b9.png)
 
 # Feature Engineering
+Using the date, 6 time series features were created in order to apply the model:
+
+Day of the week
+Quarter
+Month
+Year
+Day of the month
+Week of the year
+
+As these features represent well temporal aspects of time along a year, contemplating the main segmentations it can have.
+After this, each training and testing datasets, for each variable, was submited to this feature creation. Along with this, the datasets were separated in the input and output datasets. The input dataset included the time series features previously created, and the output dataset included the variable (meantemp, humidity or wind speed).
+
+# Grid Search: Finding the best hyperparameters along selection
+The following hyperparameters were tuned in order to obtain their best combination:
+max_depth (which is the depth of the trees used) - values tested: 3, 6, 10;
+learning_rate (which controlls the intensity of the modification that each tree performs, affecting how fast the model learns) - values tested: 0.0001, 0.001, 0.01, 0.05, 0.1;
+n_estimators (which is the number of trees used) - valued tested: 100, 500, 1000, 1500, 2000.
+
+When we increase the learning_rate,we descrease the n_estimators.
+This hyperparameters tuning was made using sklearn's Grid Search.
 
 
 
