@@ -84,6 +84,7 @@ Mean Absolute Error =  9.0
 ![image](https://user-images.githubusercontent.com/100734219/225484522-c0e2e790-7149-458f-a4f1-1422c54a5047.png)
 
 But now we could see some overfitting:
+
 ![image](https://user-images.githubusercontent.com/100734219/225484622-565a844a-1cf7-405f-8190-6518b338461b.png)
 
 At step 70 it starts happening. We can later on try to limit the n_estimators to try preventing that.
@@ -96,6 +97,7 @@ Mean Absolute Error =  2.9
 ![image](https://user-images.githubusercontent.com/100734219/225484869-3852887d-00d1-47f8-99ea-86c607be236d.png)
 
 Now we can also see some overfitting happening:
+
 ![image](https://user-images.githubusercontent.com/100734219/225485051-5801d3c5-a98c-485e-8666-b58ac6a51a0f.png)
 
 From step 450 and on. We can later on try to limit the n_estimators to try preventing that.
