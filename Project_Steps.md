@@ -47,12 +47,58 @@ After this, each training and testing datasets, for each variable, was submited 
 
 # Grid Search: Finding the best hyperparameters along selection
 The following hyperparameters were tuned in order to obtain their best combination:
+
 max_depth (which is the depth of the trees used) - values tested: 3, 6, 10;
+
 learning_rate (which controlls the intensity of the modification that each tree performs, affecting how fast the model learns) - values tested: 0.0001, 0.001, 0.01, 0.05, 0.1;
+
 n_estimators (which is the number of trees used) - valued tested: 100, 500, 1000, 1500, 2000.
 
-When we increase the learning_rate,we descrease the n_estimators.
+When we increase the learning_rate, we need to descrease the n_estimators.
 This hyperparameters tuning was made using sklearn's Grid Search.
+
+The results obtained with Grid Search were as follows:
+
+Mean Temperature: Best Parameters according to Grid Search: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+
+Humidity: Best Parameters according to Grid Search: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}
+
+Wind Speed: Best Parameters according to Grid Search: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+
+# Model Training with the best hyperparameters according to Grid Search
+
+## Results for the variable Mean Temperature
+
+Mean Squared Error =  10.9
+Mean Absolute Error =  2.7
+
+![image](https://user-images.githubusercontent.com/100734219/225484188-277c6e19-1700-4029-9fb6-bb38f7e5506a.png)
+
+And no overfitting was observer during training. Although, visually, the predictions could be better, that was the result with the best hyperparameters along the previously selected ones.
+
+## Results for the variable Humidity
+
+Mean Squared Error =  131.4
+Mean Absolute Error =  9.0
+
+![image](https://user-images.githubusercontent.com/100734219/225484522-c0e2e790-7149-458f-a4f1-1422c54a5047.png)
+
+But now we could see some overfitting:
+![image](https://user-images.githubusercontent.com/100734219/225484622-565a844a-1cf7-405f-8190-6518b338461b.png)
+
+At step 70 it starts happening. We can later on try to limit the n_estimators to try preventing that.
+
+## Results for the variable Wind Speed
+
+Mean Squared Error =  14.3
+Mean Absolute Error =  2.9
+
+![image](https://user-images.githubusercontent.com/100734219/225484869-3852887d-00d1-47f8-99ea-86c607be236d.png)
+
+Now we can also see some overfitting happening:
+![image](https://user-images.githubusercontent.com/100734219/225485051-5801d3c5-a98c-485e-8666-b58ac6a51a0f.png)
+
+From step 450 and on. We can later on try to limit the n_estimators to try preventing that.
 
 
 
