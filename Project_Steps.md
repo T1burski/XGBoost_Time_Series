@@ -70,6 +70,7 @@ Wind Speed: Best Parameters according to Grid Search: {'learning_rate': 0.01, 'm
 ## Results for the variable Mean Temperature
 
 Mean Squared Error =  10.9
+
 Mean Absolute Error =  2.7
 
 ![image](https://user-images.githubusercontent.com/100734219/225484188-277c6e19-1700-4029-9fb6-bb38f7e5506a.png)
@@ -79,6 +80,7 @@ And no overfitting was observer during training. Although, visually, the predict
 ## Results for the variable Humidity
 
 Mean Squared Error =  131.4
+
 Mean Absolute Error =  9.0
 
 ![image](https://user-images.githubusercontent.com/100734219/225484522-c0e2e790-7149-458f-a4f1-1422c54a5047.png)
@@ -102,12 +104,62 @@ Now we can also see some overfitting happening:
 
 From step 450 and on. We can later on try to limit the n_estimators to try preventing that.
 
+# Humidity and Wind Speed manual hyperparameter tuning: trying to overcome overfitting
+
+## Humidity
+
+Manual hyperparameter tuning was made in order to try preventing the overfitting that happened using the hyperparameters obtained using Grid Search previously. For that, the step chosen was to increase the number of trees and descrease the learning rate (maintaining the max_depth at 3) until MAE and MSE stopped improving and/or new overfitting started happening again. The following results were reached:
+
+![image](https://user-images.githubusercontent.com/100734219/226490000-2f6b397a-3c10-409c-ae71-4e8cdc617cf7.png)
+
+With this, the hyperparameters chosen were n_estimators = 3200 and learning_rate = 0.001, with the following result:
+
+![image](https://user-images.githubusercontent.com/100734219/226490189-cee5017b-f134-4b01-856b-0eaf8316fa46.png)
+
+## Wind Speed
+
+Using the same logic as previsouly (used for Humidity), the following results were reached:
+
+![image](https://user-images.githubusercontent.com/100734219/226495228-50cee12b-3631-4026-bdd2-656a27cdf915.png)
+
+With this, the hyperparameters chosen were n_estimators = 6000 and learning_rate = 0.0005, with the following result:
+
+![image](https://user-images.githubusercontent.com/100734219/226496653-b38aa3f5-9a2f-4b95-9e7f-7cd7710a054d.png)
+
+# Final hyperparameters and predicting the future with them
+
+The final hyperparameters for each variable prediction using XGBoost were:
+
+Mean Temperature:
+
+        - n_estimators = 500
+        - max_depth = 3
+        - learning_rate = 0.01
+
+Humidity:
+
+        - n_estimators = 3200
+        - max_depth = 3
+        - learning_rate = 0.001
+
+Wind Speed:
+
+        - n_estimators = 6000
+        - max_depth = 3
+        - learning_rate = 0.0005
 
 
+Now, using these values, the following results were obtained for the whole year (daily) of 2017:
 
+## Mean Temperature
 
+![image](https://user-images.githubusercontent.com/100734219/226497385-75031533-6388-4648-a475-287d8d37948c.png)
 
+## Humidity
 
+![image](https://user-images.githubusercontent.com/100734219/226497421-181f5f06-10ca-43c7-81cb-5cf0fec76fae.png)
 
+## Wind Speed
 
+![image](https://user-images.githubusercontent.com/100734219/226497451-1bf631d3-e16e-495d-bbe1-08c74d59f6ed.png)
 
