@@ -35,12 +35,19 @@ Then, for the sake of simplicity, we selected the data before 2016 as the traini
 # Feature Engineering
 Using the date, 6 time series features were created in order to apply the model:
 
+
 Day of the week
+
 Quarter
+
 Month
+
 Year
+
 Day of the month
+
 Week of the year
+
 
 As these features represent well temporal aspects of time along a year, contemplating the main segmentations it can have.
 After this, each training and testing datasets, for each variable, was submited to this feature creation. Along with this, the datasets were separated in the input and output datasets. The input dataset included the time series features previously created, and the output dataset included the variable (meantemp, humidity or wind speed).
